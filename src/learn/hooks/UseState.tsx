@@ -123,7 +123,7 @@ const UseState: React.FC = () => {
 
   const getJobs = () => {
     const storeJobs = JSON.parse(localStorage.getItem('jobs')!) || [];
-    console.log(storeJobs);
+    //console.log(storeJobs);
     return storeJobs;
   };
 
@@ -161,13 +161,32 @@ const UseState: React.FC = () => {
     );
   };
 
+  //----------------------------------------------------------------------------
+  // Mounted/Unmounted
+
+  const [show, setShow] = useState<boolean>(false);
+
+  const Content = () => {
+    return <h1>Hello Word!</h1>;
+  };
+
+  const RenderMountedUnmounted = () => {
+    return (
+      <>
+        <button onClick={() => setShow(!show)}>Tonggle</button>
+        {show && <Content />}
+      </>
+    );
+  };
+
   return (
     <div style={{ padding: 32 }}>
       {/* <RenderTotal /> */}
       {/* <RenderGift /> */}
       {/* <RenderCourse /> */}
       {/* <RenderCourse2 /> */}
-      <TodoList />
+      {/* <TodoList /> */}
+      <RenderMountedUnmounted />
     </div>
   );
 };
