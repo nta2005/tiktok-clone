@@ -5,3 +5,4 @@ export { default as UseRef } from './UseRef';
 export { default as UseCallback } from './UseCallback';
 export { default as UseMemo } from './UseMemo';
 export { default as UseReducer } from './UseReducer';
+export { default as UseContext } from './UseContext';
