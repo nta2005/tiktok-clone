@@ -4,3 +4,4 @@ export { default as UseLayoutEffect } from './UseLayoutEffect';
 export { default as UseRef } from './UseRef';
 export { default as UseCallback } from './UseCallback';
 export { default as UseMemo } from './UseMemo';
+export { default as UseReducer } from './UseReducer';
