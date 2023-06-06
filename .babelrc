@@ -1,14 +1,16 @@
 {
-  "plugins": [
-    [
-      "module-resolver",
-      {
-        "root": ["./src/"],
-        "alias": {
-          "learn": ["./src/learn"],
-          "components": ["./src/components"]
-        }
-      }
-    ]
-  ]
+	"plugins": [
+		[
+			"module-resolver",
+			{
+				"root": ["./src/"],
+				"alias": {
+					"learn": ["./src/learn"],
+					"components": ["./src/components"],
+					"pages": ["./src/pages"],
+					"routes": ["./src/routes"]
+				}
+			}
+		]
+	]
 }
