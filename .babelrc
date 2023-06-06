@@ -5,7 +5,8 @@
       {
         "root": ["./src/"],
         "alias": {
-          "learn": ["./src/learn"]
+          "learn": ["./src/learn"],
+          "components": ["./src/components"]
         }
       }
     ]

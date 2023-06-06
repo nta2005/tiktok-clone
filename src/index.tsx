@@ -1,20 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import 'index.css';
 import App from 'App';
 import reportWebVitals from 'reportWebVitals';
-import * as Learn from 'learn';
+import { GlobalStyles } from 'components';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
 root.render(
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>
-
-  <Learn.Router />
+	<React.StrictMode>
+		<GlobalStyles>
+			<App />
+		</GlobalStyles>
+	</React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
