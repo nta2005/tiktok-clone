@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import { Heading, Paragraph, GlobalStyles } from './components';
+import { Heading, Paragraph, GlobalStyles, Button } from './components';
 
 // CSS Module
 // Không bị trùng css của nhau
@@ -23,6 +24,7 @@ export default function CSSModule() {
         <div>Item1</div>
         <div>Item2</div>
       </div>
+      <Button primary />
     </GlobalStyles>
   );
 }
