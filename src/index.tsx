@@ -14,7 +14,7 @@ root.render(
   //   <App />
   // </React.StrictMode>
 
-  <Learn.Hooks.UseImperativeHandle />
+  <Learn.CSSModule />
 );
 
 // If you want to start measuring performance in your app, pass a function
