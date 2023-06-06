@@ -19,12 +19,13 @@ export default function CSSModule() {
       <div style={{ padding: '0 32px' }}>
         <Heading />
         <Paragraph />
+        <div className='d-flex'>
+          <div>Item1</div>
+          <div>Item2</div>
+        </div>
+        <Button primary />
+        <Button primary disabled/>
       </div>
-      <div className='d-flex'>
-        <div>Item1</div>
-        <div>Item2</div>
-      </div>
-      <Button primary />
     </GlobalStyles>
   );
 }
