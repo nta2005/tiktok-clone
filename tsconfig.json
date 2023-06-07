@@ -20,7 +20,8 @@
 			"learn/*": ["learn/*"],
 			"components/*": ["components/*"],
 			"pages/*": ["pages/*"],
-			"routes": ["routes/"]
+			"routes": ["routes/"],
+			"assets/*": ["assets/*"],
 		}
 	},
 	"include": ["src/**/*"]

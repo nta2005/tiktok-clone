@@ -5,6 +5,7 @@ import { publicRoutes } from 'routes';
 import { DefaultLayout } from 'components/Layout';
 
 function App() {
+	document.title = 'Tiktok - Make your day';
 	return (
 		<Router>
 			<Routes>
