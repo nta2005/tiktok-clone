@@ -20,7 +20,25 @@ import { AccountItem, Button } from 'components';
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
-	{ icon: <FontAwesomeIcon icon={faEarthAsia} />, title: 'English' },
+	{
+		icon: <FontAwesomeIcon icon={faEarthAsia} />,
+		title: 'English',
+		children: {
+			title: 'Language',
+			data: [
+				{
+					type: 'language',
+					code: 'en',
+					title: 'English',
+				},
+				{
+					type: 'language',
+					code: 'vi',
+					title: 'Tiếng Việt',
+				},
+			],
+		},
+	},
 	{
 		icon: <FontAwesomeIcon icon={faCircleQuestion} />,
 		title: 'Feedback and help',
@@ -37,6 +55,17 @@ function Header() {
 			setSearchResult([]);
 		}, 1000);
 	}, []);
+
+	//Handle logic
+	const handleMenuChange = (menuItem: any) => {
+		switch (menuItem.type) {
+			case 'language':
+				//Handle language
+				break;
+			default:
+				break;
+		}
+	};
 
 	return (
 		<header className={cx('wrapper')}>
@@ -79,7 +108,7 @@ function Header() {
 					<Button text>Upload</Button>
 					<Button primary>Log In</Button>
 
-					<PopperMenu items={MENU_ITEMS}>
+					<PopperMenu items={MENU_ITEMS} onChange={handleMenuChange}>
 						<button className={cx('more-btn')}>
 							{<FontAwesomeIcon icon={faEllipsisVertical} />}
 						</button>
