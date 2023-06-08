@@ -9,8 +9,15 @@ import {
 	faEarthAsia,
 	faCircleQuestion,
 	faKeyboard,
+	faCloudUpload,
+	faUser,
+	faCoins,
+	faGear,
+	faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import HeadlessTippy from '@tippyjs/react/headless';
+import 'tippy.js/dist/tippy.css';
 
 import { PopperWrapper, PopperMenu } from 'components/Popper';
 import styles from './Header.module.scss';
@@ -50,6 +57,8 @@ const MENU_ITEMS = [
 function Header() {
 	const [searchResult, setSearchResult] = useState<any>([]);
 
+	const currentUser = true;
+
 	useEffect(() => {
 		setTimeout(() => {
 			setSearchResult([]);
@@ -67,12 +76,38 @@ function Header() {
 		}
 	};
 
+	const userMenu = [
+		{
+			icon: <FontAwesomeIcon icon={faUser} />,
+			title: 'View profile',
+			to: '/profile',
+		},
+		{
+			icon: <FontAwesomeIcon icon={faCoins} />,
+			title: 'Get coins',
+			to: '/coin',
+		},
+		{
+			icon: <FontAwesomeIcon icon={faGear} />,
+			title: 'Settings',
+			to: '/settings',
+		},
+
+		...MENU_ITEMS,
+		{
+			icon: <FontAwesomeIcon icon={faSignOut} />,
+			title: 'Log out',
+			to: '/logout',
+			separate: true,
+		},
+	];
+
 	return (
 		<header className={cx('wrapper')}>
 			<div className={cx('inner')}>
 				<img src={images.logo} alt="logo" />
 
-				<Tippy
+				<HeadlessTippy
 					interactive
 					visible={searchResult.length > 0}
 					render={(attrs: any) => (
@@ -102,16 +137,36 @@ function Header() {
 							{<FontAwesomeIcon icon={faMagnifyingGlass} />}
 						</button>
 					</div>
-				</Tippy>
+				</HeadlessTippy>
 
 				<div className={cx('actions')}>
-					<Button text>Upload</Button>
-					<Button primary>Log In</Button>
+					{currentUser ? (
+						<>
+							<Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+								<button className={cx('action-btn')}>
+									{<FontAwesomeIcon icon={faCloudUpload} />}
+								</button>
+							</Tippy>
+						</>
+					) : (
+						<>
+							<Button text>Upload</Button>
+							<Button primary>Log In</Button>
+						</>
+					)}
 
-					<PopperMenu items={MENU_ITEMS} onChange={handleMenuChange}>
-						<button className={cx('more-btn')}>
-							{<FontAwesomeIcon icon={faEllipsisVertical} />}
-						</button>
+					<PopperMenu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
+						{currentUser ? (
+							<img
+								className={cx('user-avatar')}
+								src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/42a81079b5885e152707b170d63ba2df~c5_100x100.jpeg?x-expires=1686290400&x-signature=%2F5iJhGp6k5JckhV%2F2jlFioLaNbY%3D"
+								alt="Nguyen Thanh An"
+							/>
+						) : (
+							<button className={cx('more-btn')}>
+								{<FontAwesomeIcon icon={faEllipsisVertical} />}
+							</button>
+						)}
 					</PopperMenu>
 				</div>
 			</div>
