@@ -5,6 +5,7 @@ import { HeaderOnly } from 'components/Layout';
 const publicRoutes = [
 	{ path: '/', component: Home },
 	{ path: '/following', component: Following },
+	{ path: '/@:nickname', component: Profile },
 	{ path: '/search', component: Search, layout: null },
 ];
 
