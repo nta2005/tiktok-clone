@@ -9,7 +9,6 @@ import {
 	faEarthAsia,
 	faCircleQuestion,
 	faKeyboard,
-	faCloudUpload,
 	faUser,
 	faCoins,
 	faGear,
@@ -22,7 +21,7 @@ import 'tippy.js/dist/tippy.css';
 import { PopperWrapper, PopperMenu } from 'components/Popper';
 import styles from './Header.module.scss';
 import images from 'assets/images';
-import { AccountItem, Button } from 'components';
+import { AccountItem, Button, Icons, Image } from 'components';
 
 const cx = classNames.bind(styles);
 
@@ -143,9 +142,7 @@ function Header() {
 					{currentUser ? (
 						<>
 							<Tippy delay={[0, 200]} content="Upload video" placement="bottom">
-								<button className={cx('action-btn')}>
-									{<FontAwesomeIcon icon={faCloudUpload} />}
-								</button>
+								<button className={cx('action-btn')}>{<Icons.UploadIcon />}</button>
 							</Tippy>
 						</>
 					) : (
@@ -157,10 +154,11 @@ function Header() {
 
 					<PopperMenu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
 						{currentUser ? (
-							<img
+							<Image
 								className={cx('user-avatar')}
 								src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/42a81079b5885e152707b170d63ba2df~c5_100x100.jpeg?x-expires=1686290400&x-signature=%2F5iJhGp6k5JckhV%2F2jlFioLaNbY%3D"
 								alt="Nguyen Thanh An"
+								fallback="https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png"
 							/>
 						) : (
 							<button className={cx('more-btn')}>
