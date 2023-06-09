@@ -22,6 +22,7 @@
 			"pages/*": ["pages/*"],
 			"routes": ["routes/"],
 			"assets/*": ["assets/*"],
+			"hooks/*": ["hooks/*"],
 		}
 	},
 	"include": ["src/**/*"]
