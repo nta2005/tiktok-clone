@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faCircleXmark,
 	faSpinner,
-	faMagnifyingGlass,
 	faEllipsisVertical,
 	faEarthAsia,
 	faCircleQuestion,
@@ -132,17 +131,26 @@ function Header() {
 
 						<FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
 
-						<button className={cx('search-btn')}>
-							{<FontAwesomeIcon icon={faMagnifyingGlass} />}
-						</button>
+						<button className={cx('search-btn')}>{<Icons.SearchIcon />}</button>
 					</div>
 				</HeadlessTippy>
 
 				<div className={cx('actions')}>
 					{currentUser ? (
 						<>
-							<Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+							<Tippy delay={[0, 50]} content="Upload video" placement="bottom">
 								<button className={cx('action-btn')}>{<Icons.UploadIcon />}</button>
+							</Tippy>
+
+							<Tippy delay={[0, 50]} content="Message" placement="bottom">
+								<button className={cx('action-btn')}>{<Icons.MessageIcon />}</button>
+							</Tippy>
+
+							<Tippy delay={[0, 50]} content="Inbox" placement="bottom">
+								<button className={cx('action-btn')}>
+									<Icons.InboxIcon />
+									<span className={cx('badge')}>12</span>
+								</button>
 							</Tippy>
 						</>
 					) : (
