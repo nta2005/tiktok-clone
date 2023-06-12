@@ -23,7 +23,9 @@
 			"pages/*": ["pages/*"],
 			"routes": ["routes/"],
 			"assets/*": ["assets/*"],
-			"hooks/*": ["hooks/*"]
+			"hooks/*": ["hooks/*"],
+			"layouts/*": ["layouts/*"],
+			"config/*": ["config/*"]
 		}
 	},
 	"include": ["src/**/*"]

@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 const axiosClient = axios.create({
-	baseURL: 'https://tiktok.fullstack.edu.vn/api/',
+	baseURL: process.env.REACT_APP_BASE_URL,
 	headers: {
 		'Content-Type': 'application/json',
 	},
