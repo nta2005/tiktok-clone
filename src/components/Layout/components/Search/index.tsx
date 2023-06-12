@@ -51,17 +51,16 @@ export default function Search() {
 		setShowResult(false);
 	};
 
-	const handleInputChange = (e: any) => {
-		const value = e.target.value;
+	const handleChange = (e: any) => {
+		const searchValue = e.target.value;
 
-		if (value.startsWith(' ')) {
-			if (searchValue !== '') {
-				e.setSelectionRange(value.length, value.length);
-			}
-			setSearchValue('');
-		} else {
-			setSearchValue(value);
+		if (!searchValue.startsWith(' ')) {
+			setSearchValue(searchValue);
 		}
+	};
+
+	const handleSubmit = () => {
+		//search
 	};
 
 	return (
@@ -86,7 +85,7 @@ export default function Search() {
 					aria-label="search"
 					placeholder="Search accounts and videos"
 					spellCheck={false}
-					onChange={handleInputChange}
+					onChange={handleChange}
 					onFocus={() => setShowResult(true)}
 				/>
 
@@ -98,7 +97,9 @@ export default function Search() {
 
 				{loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
-				<button className={cx('search-btn')}>{<Icons.SearchIcon />}</button>
+				<button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+					{<Icons.SearchIcon />}
+				</button>
 			</div>
 		</HeadlessTippy>
 	);
