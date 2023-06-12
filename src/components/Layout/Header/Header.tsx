@@ -12,7 +12,7 @@ import { Button, Icons, Image } from 'components';
 import { PopperMenu } from 'components/Popper';
 import { MENU_ITEMS, USER_MENU } from 'utils/contants';
 
-import Search from '../Search';
+import Search from '../Search/Search';
 import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
