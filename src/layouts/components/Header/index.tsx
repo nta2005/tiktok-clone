@@ -2,57 +2,22 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-	faEllipsisVertical,
-	faEarthAsia,
-	faCircleQuestion,
-	faKeyboard,
-	faUser,
-	faCoins,
-	faGear,
-	faSignOut,
-} from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
 import config from 'config';
-import { PopperMenu } from 'components/Popper';
-import styles from './Header.module.scss';
-import images from 'assets/images';
+import { images } from 'assets';
 import { Button, Icons, Image } from 'components';
+import { PopperMenu } from 'components/Popper';
+import { MENU_ITEMS, USER_MENU } from 'utils/contants';
+
 import Search from '../Search';
+import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
 
-const MENU_ITEMS = [
-	{
-		icon: <FontAwesomeIcon icon={faEarthAsia} />,
-		title: 'English',
-		children: {
-			title: 'Language',
-			data: [
-				{
-					type: 'language',
-					code: 'en',
-					title: 'English',
-				},
-				{
-					type: 'language',
-					code: 'vi',
-					title: 'Tiếng Việt',
-				},
-			],
-		},
-	},
-	{
-		icon: <FontAwesomeIcon icon={faCircleQuestion} />,
-		title: 'Feedback and help',
-		to: '/feedback',
-	},
-	{ icon: <FontAwesomeIcon icon={faKeyboard} />, title: 'Keyboard shortcuts' },
-];
-
-function Header() {
+const Header: React.FC = () => {
 	const currentUser = true;
 
 	//Handle logic
@@ -65,32 +30,6 @@ function Header() {
 				break;
 		}
 	};
-
-	const userMenu = [
-		{
-			icon: <FontAwesomeIcon icon={faUser} />,
-			title: 'View profile',
-			to: '/profile',
-		},
-		{
-			icon: <FontAwesomeIcon icon={faCoins} />,
-			title: 'Get coins',
-			to: '/coin',
-		},
-		{
-			icon: <FontAwesomeIcon icon={faGear} />,
-			title: 'Settings',
-			to: '/settings',
-		},
-
-		...MENU_ITEMS,
-		{
-			icon: <FontAwesomeIcon icon={faSignOut} />,
-			title: 'Log out',
-			to: '/logout',
-			separate: true,
-		},
-	];
 
 	return (
 		<header className={cx('wrapper')}>
@@ -126,7 +65,7 @@ function Header() {
 						</>
 					)}
 
-					<PopperMenu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
+					<PopperMenu data={currentUser ? USER_MENU : MENU_ITEMS} onChange={handleMenuChange}>
 						{currentUser ? (
 							<Image
 								className={cx('user-avatar')}
@@ -144,6 +83,6 @@ function Header() {
 			</div>
 		</header>
 	);
-}
+};
 
 export default Header;

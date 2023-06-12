@@ -3,10 +3,17 @@ import classNames from 'classnames';
 import images from 'assets/images';
 import styles from './Image.module.scss';
 
-const Image = (
-	{ src, alt, className, fallback: customFallback = images.noImage, ...props }: any,
-	ref: any,
-) => {
+interface Props {
+	src: string;
+	alt: string;
+	className?: string;
+	fallback?: string;
+	[x: string]: any;
+}
+
+const Image: React.FC<Props> = React.forwardRef((props: Props, ref: any) => {
+	const { src, alt, className, fallback: customFallback = images.noImage, ...passProps } = props;
+
 	const [fallback, setFallback] = React.useState('');
 
 	const handleError = () => {
@@ -19,10 +26,10 @@ const Image = (
 			ref={ref}
 			src={fallback || src}
 			alt={alt}
-			{...props}
+			{...passProps}
 			onError={handleError}
 		/>
 	);
-};
+});
 
-export default React.forwardRef(Image);
+export default Image;

@@ -1,47 +1,71 @@
+import React from 'react';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
+
 import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Button({
-	to,
-	href,
-	text = false,
-	primary = false,
-	outline = false,
-	rounded = false,
-	small = false,
-	large = false,
-	disabled = false,
-	leftIcon,
-	rightIcon,
-	children,
-	className,
-	onClick,
-	...passProps
-}: any) {
+interface Props {
+	to?: string;
+	href?: string;
+	text?: boolean;
+	primary?: boolean;
+	outline?: boolean;
+	rounded?: boolean;
+	small?: boolean;
+	large?: boolean;
+	disabled?: boolean;
+	leftIcon?: IconDefinition;
+	rightIcon?: IconDefinition;
+	children: any;
+	className?: string | any;
+	onClick?: () => void;
+	[x: string]: any;
+}
+
+const Button: React.FC<Props> = (props: Props) => {
+	const {
+		to,
+		href,
+		text = false,
+		primary = false,
+		outline = false,
+		rounded = false,
+		small = false,
+		large = false,
+		disabled = false,
+		leftIcon,
+		rightIcon,
+		children,
+		className,
+		onClick,
+		...passProps
+	} = props;
+
 	let Comp: any = 'button';
 
-	const props: any = {
+	const dataProps: any = {
 		onClick,
 		...passProps,
 	};
 
 	//Remove event listener when button is disabled
 	if (disabled) {
-		Object.keys(props).forEach((key) => {
-			if (key.startsWith('on') && typeof props[key] === 'function') {
-				delete props[key];
+		Object.keys(dataProps).forEach((key) => {
+			if (key.startsWith('on') && typeof dataProps[key] === 'function') {
+				delete dataProps[key];
 			}
 		});
 	}
 
 	if (to) {
-		props.to = to;
+		dataProps.to = to;
 		Comp = Link;
 	} else if (href) {
-		props.href = href;
+		dataProps.href = href;
 		Comp = 'a';
 	}
 
@@ -57,12 +81,12 @@ function Button({
 	});
 
 	return (
-		<Comp className={classes} {...props}>
-			{leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
+		<Comp className={classes} {...dataProps}>
+			{leftIcon && <span className={cx('icon')}>{<FontAwesomeIcon icon={leftIcon} />}</span>}
 			<span className={cx('title')}>{children}</span>
-			{rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
+			{rightIcon && <span className={cx('icon')}>{<FontAwesomeIcon icon={rightIcon} />}</span>}
 		</Comp>
 	);
-}
+};
 
 export default Button;

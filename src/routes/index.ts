@@ -1,4 +1,4 @@
-import config from 'config';
+import config from 'config/index';
 import { Home, Following, Profile, Upload, Search } from 'pages';
 import { HeaderOnly } from 'layouts';
 

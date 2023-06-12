@@ -4,10 +4,15 @@ import styles from './AccountItem.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { Image } from 'components';
+import { Account } from 'models';
 
 const cx = classNames.bind(styles);
 
-function AccountItem({ data }: any) {
+interface Props {
+	data: Account;
+}
+
+const AccountItem: React.FC<Props> = ({ data }) => {
 	return (
 		<Link to={`/@${data.nickname}`} className={cx('wrapper')}>
 			<Image className={cx('avatar')} src={data.avatar} alt={data.full_name} />
@@ -20,6 +25,6 @@ function AccountItem({ data }: any) {
 			</div>
 		</Link>
 	);
-}
+};
 
 export default AccountItem;

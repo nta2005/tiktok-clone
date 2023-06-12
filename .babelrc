@@ -13,7 +13,9 @@
 					"assets": ["./src/assets"],
 					"hooks": ["./src/hooks"],
 					"layouts": ["./src/layouts"],
-					"config": ["./src/config"]
+					"config": ["./src/config"],
+					"models": ["./src/models"],
+					"utils": ["./src/utils"]
 				}
 			}
 		]

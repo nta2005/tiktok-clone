@@ -1,6 +1,11 @@
+import React from 'react';
 import Header from '../components/Header';
 
-function HeaderOnly({ children }: any) {
+interface Props {
+	children: any;
+}
+
+const HeaderOnly: React.FC<Props> = ({ children }) => {
 	return (
 		<div>
 			<Header />
@@ -9,6 +14,6 @@ function HeaderOnly({ children }: any) {
 			</div>
 		</div>
 	);
-}
+};
 
 export default HeaderOnly;

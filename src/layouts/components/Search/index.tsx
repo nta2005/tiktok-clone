@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,7 +12,7 @@ import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
 
-export default function Search() {
+const Search: React.FC = () => {
 	const [searchValue, setSearchValue] = useState('');
 	const [searchResult, setSearchResult] = useState<any>([]);
 	const [showResult, setShowResult] = useState(true);
@@ -57,10 +56,6 @@ export default function Search() {
 		if (!searchValue.startsWith(' ')) {
 			setSearchValue(searchValue);
 		}
-	};
-
-	const handleSubmit = () => {
-		//search
 	};
 
 	return (
@@ -107,4 +102,6 @@ export default function Search() {
 			</HeadlessTippy>
 		</div>
 	);
-}
+};
+
+export default Search;

@@ -25,7 +25,9 @@
 			"assets/*": ["assets/*"],
 			"hooks/*": ["hooks/*"],
 			"layouts/*": ["layouts/*"],
-			"config/*": ["config/*"]
+			"config/*": ["config/*"],
+			"models/*": ["models/*"],
+			"utils/*": ["utils/*"]
 		}
 	},
 	"include": ["src/**/*"]

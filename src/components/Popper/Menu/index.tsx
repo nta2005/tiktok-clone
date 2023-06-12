@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 
@@ -7,14 +7,25 @@ import MenuItem from './MenuItem';
 import Header from './Header';
 import styles from './Menu.module.scss';
 
+import { Menu } from 'models';
+
 const cx = classNames.bind(styles);
 
 const defaultFn = () => {};
 
-function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn }: any) {
-	const [history, setHistory] = useState([{ data: items }]);
+interface Props {
+	children: any;
+	data: Menu[];
+	hideOnClick?: boolean;
+	onChange?: any;
+}
 
-	const current = history[history.length - 1];
+const PopperMenu: React.FC<Props> = (props: Props) => {
+	const { children, data = [], hideOnClick = false, onChange = defaultFn } = props;
+
+	const [history, setHistory] = useState([{ data: data }]);
+
+	const current: any = history[history.length - 1];
 
 	const renderItems = () => {
 		return current.data.map((item: any, index: number) => {
@@ -47,7 +58,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
 					<PopperWrapper className={cx('menu-popper')}>
 						{history.length > 1 && (
 							<Header
-								title="Language"
+								title={current.title}
 								onBack={() => {
 									setHistory((prev) => prev.slice(0, prev.length - 1));
 								}}
@@ -63,6 +74,6 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
 			{children}
 		</Tippy>
 	);
-}
+};
 
-export default Menu;
+export default PopperMenu;

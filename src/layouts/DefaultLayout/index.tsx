@@ -1,3 +1,4 @@
+import React from 'react';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import classNames from 'classnames/bind';
@@ -5,7 +6,11 @@ import styles from './DefaultLayout.module.scss';
 
 const cx = classNames.bind(styles);
 
-function DefaultLayout({ children }: any) {
+interface Props {
+	children: any;
+}
+
+const DefaultLayout: React.FC<Props> = ({ children }) => {
 	return (
 		<div className={cx('wrapper')}>
 			<Header />
@@ -15,6 +20,6 @@ function DefaultLayout({ children }: any) {
 			</div>
 		</div>
 	);
-}
+};
 
 export default DefaultLayout;

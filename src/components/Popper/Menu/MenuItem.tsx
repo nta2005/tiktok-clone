@@ -3,10 +3,16 @@ import classNames from 'classnames/bind';
 import styles from './Menu.module.scss';
 
 import { Button } from 'components';
+import { Menu } from 'models'
 
 const cx = classNames.bind(styles);
 
-function MenuItem({ data, onClick }: any) {
+interface Props {
+	data: Menu;
+	onClick?: () => void;
+}
+
+const MenuItem: React.FC<Props> = ({ data, onClick }) => {
 	const classes = cx('menu-item', {
 		separate: data.separate,
 	});
@@ -16,6 +22,6 @@ function MenuItem({ data, onClick }: any) {
 			{data.title}
 		</Button>
 	);
-}
+};
 
 export default MenuItem;
