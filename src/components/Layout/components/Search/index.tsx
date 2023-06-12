@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 
+import SearchApi from 'api/searchApi';
 import { PopperWrapper } from 'components/Popper';
 import { AccountItem, Icons } from 'components';
 import { useDebounce } from 'hooks';
@@ -28,21 +29,16 @@ export default function Search() {
 			return;
 		}
 
-		setLoading(true);
-
-		fetch(
-			`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-				debounced,
-			)}&type=less`,
-		)
-			.then((res) => res.json())
-			.then((res) => {
+		(async () => {
+			try {
+				setLoading(true);
+				const res = await SearchApi.searchAccounts(debounced);
 				setSearchResult(res.data);
 				setLoading(false);
-			})
-			.catch((err) => {
+			} catch (error) {
 				setLoading(false);
-			});
+			}
+		})();
 	}, [debounced]);
 
 	const handleClear = () => {

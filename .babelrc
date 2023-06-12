@@ -5,6 +5,7 @@
 			{
 				"root": ["./src/"],
 				"alias": {
+					"api": ["./src/api"],
 					"learn": ["./src/learn"],
 					"components": ["./src/components"],
 					"pages": ["./src/pages"],
