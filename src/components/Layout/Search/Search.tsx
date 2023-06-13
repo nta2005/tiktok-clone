@@ -18,12 +18,12 @@ const Search: React.FC = () => {
 	const [showResult, setShowResult] = useState(true);
 	const [loading, setLoading] = useState(false);
 
-	const debounced = useDebounce(searchValue, 500);
+	const debouncedValue = useDebounce(searchValue, 500);
 
 	const inputRef = useRef<any>();
 
 	useEffect(() => {
-		if (!debounced.trim()) {
+		if (!debouncedValue.trim()) {
 			setSearchResult([]);
 			return;
 		}
@@ -31,14 +31,14 @@ const Search: React.FC = () => {
 		(async () => {
 			try {
 				setLoading(true);
-				const res = await SearchApi.searchAccounts(debounced);
+				const res = await SearchApi.searchAccounts(debouncedValue);
 				setSearchResult(res.data);
 				setLoading(false);
 			} catch (error) {
 				setLoading(false);
 			}
 		})();
-	}, [debounced]);
+	}, [debouncedValue]);
 
 	const handleClear = () => {
 		setSearchValue('');

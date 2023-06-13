@@ -12,7 +12,7 @@ interface Props {
 	onBack?: () => void;
 }
 
-const Header: React.FC<Props> = ({ title, onBack }) => {
+const MenuHeader: React.FC<Props> = ({ title, onBack }) => {
 	return (
 		<header className={cx('header')}>
 			<button className={cx('back-btn')} onClick={onBack}>
@@ -24,4 +24,4 @@ const Header: React.FC<Props> = ({ title, onBack }) => {
 	);
 };
 
-export default Header;
+export default MenuHeader;
