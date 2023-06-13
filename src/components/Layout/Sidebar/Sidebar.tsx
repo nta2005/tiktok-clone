@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import styles from './Sidebar.module.scss';
 import config from 'config';
-import { Icons } from 'components';
+import { Icons, SuggestedAccounts } from 'components';
 import { SidebarMenu, SidebarMenuItem } from './Menu';
 
 const cx = classNames.bind(styles);
@@ -29,6 +29,9 @@ const Sidebar: React.FC = () => {
 					activeIcon={<Icons.LiveActiveIcon />}
 				/>
 			</SidebarMenu>
+
+			<SuggestedAccounts label="Suggested accounts" />
+			<SuggestedAccounts label="Following accounts" />
 		</aside>
 	);
 };

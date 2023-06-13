@@ -8,6 +8,9 @@ import {
 	faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
 
+const avatarUrl =
+	'https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/42a81079b5885e152707b170d63ba2df~c5_100x100.jpeg?x-expires=1686290400&x-signature=%2F5iJhGp6k5JckhV%2F2jlFioLaNbY%3D';
+
 const MENU_ITEMS = [
 	{
 		id: 3,
@@ -74,4 +77,4 @@ const USER_MENU = [
 	},
 ];
 
-export { MENU_ITEMS, USER_MENU };
+export { avatarUrl, MENU_ITEMS, USER_MENU };
