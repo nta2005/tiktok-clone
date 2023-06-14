@@ -7,22 +7,20 @@ import styles from './SuggestedAccounts.module.scss';
 import { Account } from 'models';
 import { Image } from 'components';
 import { PopperWrapper } from 'components/Popper';
-import { avatarUrl } from 'utils';
 
 import AccountPreview from './AccountPreview';
 
 const cx = classNames.bind(styles);
 
 interface Props {
-	label?: string;
-	data?: Account;
+	data: Account;
 }
 
-const AccountItem: React.FC<Props> = ({ label, data }) => {
+const AccountItem: React.FC<Props> = ({ data }) => {
 	const renderPreview = (attrs: any) => (
 		<div tabIndex={-1} {...attrs}>
 			<PopperWrapper>
-				<AccountPreview />
+				<AccountPreview data={data} />
 			</PopperWrapper>
 		</div>
 	);
@@ -36,14 +34,14 @@ const AccountItem: React.FC<Props> = ({ label, data }) => {
 				placement="bottom"
 				render={renderPreview}>
 				<div className={cx('account-item')}>
-					<Image className={cx('avatar')} src={avatarUrl} alt="Nguyen Thanh An" />
+					<Image className={cx('avatar')} src={data.avatar} alt={data.nickname} />
 
 					<div className={cx('item-info')}>
 						<p className={cx('nickname')}>
-							<strong>thanhan0520</strong>
-							<FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
+							<strong>{data.nickname}</strong>
+							{data.tick && <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />}
 						</p>
-						<p className={cx('name')}>Nguyen Thanh An</p>
+						<p className={cx('name')}>{data.full_name}</p>
 					</div>
 				</div>
 			</Tippy>

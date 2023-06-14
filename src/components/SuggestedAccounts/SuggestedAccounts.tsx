@@ -8,21 +8,24 @@ const cx = classNames.bind(styles);
 
 interface Props {
 	label: string;
-	data?: Account;
+	data?: Account[];
+	onViewChange?: () => void;
 }
 
-const SuggestedAccounts: React.FC<Props> = ({ label, data }) => {
-	return (
+const SuggestedAccounts: React.FC<Props> = ({ label, data = [], onViewChange }) => {
+	return data.length > 0 ? (
 		<div className={cx('wrapper')}>
 			<p className={cx('label')}>{label}</p>
 
-			<AccountItem />
-			<AccountItem />
-			<AccountItem />
+			{data.map((item: Account) => (
+				<AccountItem key={item.id} data={item} />
+			))}
 
-			<p className={cx('more-btn')}>See all</p>
+			<p className={cx('more-btn')} onClick={onViewChange}>
+				See all
+			</p>
 		</div>
-	);
+	) : null;
 };
 
 export default SuggestedAccounts;
